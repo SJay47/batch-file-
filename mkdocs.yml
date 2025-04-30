@@ -1,4 +1,4 @@
-site_name: <<{readable_name}>>
+site_name: Batch File
 theme:
   name: material
   palette:
