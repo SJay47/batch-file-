@@ -18,11 +18,6 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Unshallow & fetch tags
-        run: |
-          git fetch --unshallow
-          git fetch --tags
-
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
