@@ -35,10 +35,14 @@ def extract_statistics(stats: dict) -> list:
     std_dev = stats.get("stdDev", 0)
     unique_count = stats.get("uniqueCount", 0)
     null_count = stats.get("nullCount", 0)
-    percentiles = stats.get("percentiles", {})
-    p25 = percentiles.get("p25", 0)
-    p50 = percentiles.get("p50", 0)
-    p75 = percentiles.get("p75", 0)
+    try:
+        percentiles = stats.get("percentiles", {})
+        p25 = percentiles.get("p25", 0)
+        p50 = percentiles.get("p50", 0)
+        p75 = percentiles.get("p75", 0)
+    except AttributeError:
+        logger.warning("Invalid percentiles data structure", exc_info=True)
+        p25 = p50 = p75 = 0
 
     return [
         min_val,
